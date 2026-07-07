@@ -249,6 +249,12 @@
 #define EMACS_INSERTFILE   0x503
 #define EMACS_EXIT         0x504
 #define EMACS_UNDO         0x505
+#define EMACS_RECMACRO     0x506
+#define EMACS_RUNMACRO     0x507
+#define EMACS_PREVBUF      0x508
+#define EMACS_NEXTBUF      0x509
+#define EMACS_SCROLLLEFT   0x50A
+#define EMACS_SCROLLRIGHT  0x50B
 
 #ifndef NANO_TINY
 /* Some extra flags for the undo function. */

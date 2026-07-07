@@ -1588,6 +1588,28 @@ int interpret_ctrl_x(void)
 			return EMACS_UNDO;
 		case '\x17':
 			return EMACS_WRITEOUT;
+		case 'k':
+			return EMACS_EXIT;
+		case 'u':
+			return EMACS_UNDO;
+#ifndef NANO_TINY
+		case '(':
+		case ')':
+			return EMACS_RECMACRO;
+		case 'e':
+			return EMACS_RUNMACRO;
+		case '<':
+			return EMACS_SCROLLLEFT;
+		case '>':
+			return EMACS_SCROLLRIGHT;
+#endif
+#ifdef ENABLE_MULTIBUFFER
+		case 'b':
+		case KEY_RIGHT:
+			return EMACS_NEXTBUF;
+		case KEY_LEFT:
+			return EMACS_PREVBUF;
+#endif
 	}
 
 	return FOREIGN_SEQUENCE;

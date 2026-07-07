@@ -1281,9 +1281,30 @@ void shortcut_init(void)
 		add_to_sclist(MMAIN, "^W", 0, cut_text, 0);
 		add_to_sclist(MMAIN, "M-W", 0, copy_text, 0);
 		add_to_sclist(MMAIN, "^Y", 0, paste_text, 0);
+		add_to_sclist(MMAIN|MHELP, "M-<", 0, to_first_line, 0);
+		add_to_sclist(MMAIN|MHELP, "M->", 0, to_last_line, 0);
+		add_to_sclist(MMAIN, "M-{", 0, to_prev_block, 0);
+		add_to_sclist(MMAIN, "M-}", 0, to_next_block, 0);
 #ifndef NANO_TINY
 		add_to_sclist(MMAIN, "^X^U", EMACS_UNDO, do_undo, 0);
 		add_to_sclist(MMAIN, "^/", 0, do_undo, 0);
+		add_to_sclist(MMAIN, "^Space", 0, do_mark, 0);
+		add_to_sclist(MMAIN, "M-D", 0, chop_next_word, 0);
+		add_to_sclist(MMAIN, "M-!", 0, do_execute, 0);
+		add_to_sclist(MMAIN, "^X(", EMACS_RECMACRO, record_macro, 0);
+		add_to_sclist(MMAIN, "^Xe", EMACS_RUNMACRO, run_macro, 0);
+		add_to_sclist(MMAIN, "^X<", EMACS_SCROLLLEFT, do_scroll_left, 0);
+		add_to_sclist(MMAIN, "^X>", EMACS_SCROLLRIGHT, do_scroll_right, 0);
+#endif
+#ifdef ENABLE_MULTIBUFFER
+		add_to_sclist(MMAIN, "^Xb", EMACS_NEXTBUF, switch_to_next_buffer, 0);
+		add_to_sclist(MMAIN, "^XLeft", EMACS_PREVBUF, switch_to_prev_buffer, 0);
+#endif
+#ifdef ENABLE_JUSTIFY
+		add_to_sclist(MMAIN, "M-Q", 0, do_justify, 0);
+#endif
+#ifdef ENABLE_COMMENT
+		add_to_sclist(MMAIN, "M-;", 0, do_comment, 0);
 #endif
 		add_to_sclist((MMOST & ~MMAIN) | MYESNO, "^G", 0, do_cancel, 0);
 	}
